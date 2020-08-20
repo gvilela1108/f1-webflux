@@ -122,7 +122,7 @@ public class RaceServiceImpl implements RaceService {
 
                             fastestLapRepository.save(
                                 fastestLapMapper.fromClientToEntity(
-                                    resultRace.getFastestLap(), season, round));
+                                    resultRace.getFastestLap(), season, round, resultRace.getDriver().getDriverId()));
                             resultRepository.save(
                                 resultMapper.fromClientToEntity(resultRace, season, round));
                           });
@@ -160,8 +160,8 @@ public class RaceServiceImpl implements RaceService {
                         var constructor =
                             constructorRepository.findByConstructorId(result.getConstructorId());
                         var fastestLap =
-                            fastestLapRepository.findBySeasonAndRound(
-                                race.getSeason(), race.getRound());
+                            fastestLapRepository.findBySeasonAndRoundAndDriverId(
+                                race.getSeason(), race.getRound(),driver.getDriverId());
 
                         resultsResponses.add(
                             resultMapper.fromEntityToResponse(

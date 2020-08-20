@@ -17,7 +17,7 @@ public class FastestLapMapperTest {
 
   @Test
   public void shouldGetFLap_whenFromClientToEntityIsCalled() {
-    final var result = mapper.fromClientToEntity(fastestLapResponseBuilder(), SEASON, ROUND);
+    final var result = mapper.fromClientToEntity(fastestLapResponseBuilder(), SEASON, ROUND, DRIVER_ID);
     assertEquals(result, driverBuilder());
   }
 

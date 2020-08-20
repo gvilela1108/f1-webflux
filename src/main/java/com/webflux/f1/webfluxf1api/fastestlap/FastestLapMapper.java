@@ -12,18 +12,12 @@ import static org.springframework.util.ObjectUtils.isEmpty;
 public interface FastestLapMapper {
 
   default FastestLap fromClientToEntity(
-      FastestLapResponse fastestLapResponse, Integer season, String round) {
+      FastestLapResponse fastestLapResponse, Integer season, String round, String driverId) {
     return FastestLap.builder()
-        .lap(
-            isEmpty(fastestLapResponse.getLap()) ? 0 : Integer.valueOf(fastestLapResponse.getLap()))
-        .rank(
-            isEmpty(fastestLapResponse.getRank())
-                ? 0
-                : Integer.valueOf(fastestLapResponse.getRank()))
-        .speed(
-            isEmpty(fastestLapResponse.getAverageSpeed().getSpeed())
-                ? 0
-                : Float.valueOf(fastestLapResponse.getAverageSpeed().getSpeed()))
+        .driverId(driverId)
+        .lap(isEmpty(fastestLapResponse.getLap()) ? 0 : Integer.valueOf(fastestLapResponse.getLap()))
+        .rank(isEmpty(fastestLapResponse.getRank()) ? 0 : Integer.valueOf(fastestLapResponse.getRank()))
+        .speed(isEmpty(fastestLapResponse.getAverageSpeed().getSpeed()) ? 0 : Float.valueOf(fastestLapResponse.getAverageSpeed().getSpeed()))
         .time(fastestLapResponse.getTime().getTime())
         .round(round)
         .season(season)

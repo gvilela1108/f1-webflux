@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FastestLapRepository extends JpaRepository<FastestLap, String> {
 
-  FastestLap findBySeasonAndRound(Integer season, String round);
+  FastestLap findBySeasonAndRoundAndDriverId(Integer season, String round, String driverId);
 }

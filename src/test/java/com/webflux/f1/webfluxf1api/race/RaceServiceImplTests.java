@@ -67,7 +67,7 @@ public class RaceServiceImplTests {
     when(driverRepository.findByDriverId(DRIVER_ID)).thenReturn(null);
     when(driverMapper.fromClientToEntity(driverResponseBuilder())).thenReturn(driver);
     when(driverRepository.save(driver)).thenReturn(driver);
-    when(fastestLapMapper.fromClientToEntity(fastestLapResponseBuilder(), SEASON, ROUND))
+    when(fastestLapMapper.fromClientToEntity(fastestLapResponseBuilder(), SEASON, ROUND, DRIVER_ID))
         .thenReturn(fastestLap);
     when(fastestLapRepository.save(fastestLap)).thenReturn(fastestLap);
     when(resultMapper.fromClientToEntity(resultClientBuilder(), SEASON, ROUND)).thenReturn(results);
@@ -92,7 +92,7 @@ public class RaceServiceImplTests {
     verify(driverMapper, times(INTEGER_ONE)).fromClientToEntity(driverResponseBuilder());
     verify(driverRepository, times(INTEGER_ONE)).save(driver);
     verify(fastestLapMapper, times(INTEGER_ONE))
-        .fromClientToEntity(fastestLapResponseBuilder(), SEASON, ROUND);
+        .fromClientToEntity(fastestLapResponseBuilder(), SEASON, ROUND,DRIVER_ID);
     verify(fastestLapRepository, times(INTEGER_ONE)).save(fastestLap);
     verify(resultMapper, times(INTEGER_ONE))
         .fromClientToEntity(resultClientBuilder(), SEASON, ROUND);
@@ -108,7 +108,7 @@ public class RaceServiceImplTests {
     when(driverRepository.findByDriverId(DRIVER_ID)).thenReturn(driverBuilder());
     when(constructorRepository.findByConstructorId(CONSTRUCTOR_ID))
         .thenReturn(constructorBuilder());
-    when(fastestLapRepository.findBySeasonAndRound(SEASON, ROUND)).thenReturn(fastestLapBuilder());
+    when(fastestLapRepository.findBySeasonAndRoundAndDriverId(SEASON, ROUND,DRIVER_ID)).thenReturn(fastestLapBuilder());
     when(driverMapper.fromEntityToResponse(driverBuilder())).thenReturn(driverResponseBuilder());
     when(constructorMapper.fromEntityToResponse(constructorBuilder()))
         .thenReturn(constructorResponseBuilder());
@@ -134,7 +134,7 @@ public class RaceServiceImplTests {
     verify(resultRepository, times(INTEGER_ONE)).findBySeasonAndRound(SEASON, ROUND);
     verify(driverRepository, times(INTEGER_ONE)).findByDriverId(DRIVER_ID);
     verify(constructorRepository, times(INTEGER_ONE)).findByConstructorId(CONSTRUCTOR_ID);
-    verify(fastestLapRepository, times(INTEGER_ONE)).findBySeasonAndRound(SEASON, ROUND);
+    verify(fastestLapRepository, times(INTEGER_ONE)).findBySeasonAndRoundAndDriverId(SEASON, ROUND,DRIVER_ID);
     verify(driverMapper, times(INTEGER_ONE)).fromEntityToResponse(driverBuilder());
     verify(constructorMapper, times(INTEGER_ONE)).fromEntityToResponse(constructorBuilder());
     verify(fastestLapMapper, times(INTEGER_ONE)).fromEntityToClient(fastestLapBuilder());

@@ -25,6 +25,9 @@ public class FastestLap {
   @Column(name = "round", nullable = false)
   private String round;
 
+  @Column(name = "driver_id", nullable = false)
+  private String driverId;
+
   @Column(name = "rank", nullable = false)
   private Integer rank;
 
