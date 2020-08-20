@@ -1,9 +1,12 @@
---drop table results;
---drop table constructors;
---drop table drivers;
---drop table fatests_lap;
---drop table races;
---drop table circuits;
+--drop table circuits
+
+
+drop table results;
+drop table constructors;
+drop table drivers;
+drop table fatests_lap;
+drop table races;
+drop table circuits;
 
 create table circuits (
 	id BIGSERIAL not null
@@ -21,13 +24,12 @@ create table circuits (
 create table races (
 	id BIGSERIAL not null
 	,season		INTEGER  	NOT NULL
-	,round		VARCHAR(30)	NOT NULL
+	,round		VARCHAR(5)	NOT NULL
 	,url		VARCHAR(2000)	NOT NULL
 	,race_name	VARCHAR(200)	NOT null
-	,circuit_id	varchar(30)	not null
+	,circuit_id	varchar(13)	not null
 	,date		DATE		NOT NULL
-	,time		VARCHAR(30)	NOT null
-	,sent_kafka  boolean not null default false
+	,time		VARCHAR(9)	NOT null
     ,dat_creation 			TIMESTAMP not null
     ,dat_update 				TIMESTAMP
 
@@ -36,11 +38,11 @@ create table races (
 create table fatests_lap(
 	id BIGSERIAL not null
 	,season					INTEGER  	NOT NULL
-	,round					VARCHAR(30)	NOT null
+	,round					VARCHAR(5)	NOT null
 	,rank					INTEGER 	NOT null
 	,lap					INTEGER
 	,time_milis				VARCHAR(30)
-	,time					VARCHAR(30)
+	,time					VARCHAR(8)
 	,average_speed_units	VARCHAR(3)
 	,average_speed			NUMERIC(7,3)
     ,dat_creation 			TIMESTAMP not null
@@ -63,7 +65,7 @@ create table drivers (
 
 create table constructors (
 id BIGSERIAL not null
-  ,constructor_id			VARCHAR(30) NOT NULL
+  ,constructor_id			VARCHAR(8) NOT NULL
   ,url			VARCHAR(200) NOT NULL
   ,name			VARCHAR(20) NOT NULL
   ,nationality	VARCHAR(20) NOT null
@@ -74,14 +76,14 @@ id BIGSERIAL not null
 create table results (
 id BIGSERIAL not null
 	,season		INTEGER  	NOT NULL
-	,round		VARCHAR(30)	NOT NULL
+	,round		VARCHAR(5)	NOT NULL
 	,numero			varchar(4)	not null
 	,position		varchar(2)	not	null
 	,position_text	varchar(20)	not null
 	,points			INTEGER		not	null
 	,driver_id		VARCHAR(30)	not null
-	,constructor_id	varchar(30)	not null
-	,grid			VARCHAR(30)	not null
+	,constructor_id	varchar(8)	not null
+	,grid			VARCHAR(3)	not null
 	,laps			integer		not null
 	,status			VARCHAR(20)	NOT null
 	,time_millis	integer
@@ -102,3 +104,4 @@ alter table results add constraint fk_results_races foreign key(season,round) RE
 alter table results add constraint fk_results_driver foreign key(driver_id) REFERENCES	drivers(driver_id);
 alter table results add constraint fk_results_constructors foreign key(constructor_id) REFERENCES	constructors(constructor_id);
 alter table fatests_lap add constraint fk_race_flap foreign key(season,round) REFERENCES	races(season,round);
+
