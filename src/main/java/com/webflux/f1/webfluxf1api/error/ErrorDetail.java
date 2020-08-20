@@ -12,10 +12,9 @@ import java.util.List;
 @NoArgsConstructor
 public class ErrorDetail {
 
-    @Singular
-    private List<ErrorItem> errors;
+  @Singular private List<ErrorItem> errors;
 
-    public ErrorDetail(final ErrorCode errorCode) {
-        this.errors = Collections.singletonList(new ErrorItem(errorCode));
-    }
+  public ErrorDetail(final ErrorCode errorCode) {
+    this.errors = Collections.singletonList(new ErrorItem(errorCode));
+  }
 }

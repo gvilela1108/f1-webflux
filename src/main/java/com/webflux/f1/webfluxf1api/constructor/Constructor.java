@@ -15,25 +15,21 @@ import javax.persistence.*;
 @DynamicUpdate
 public class Constructor {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-    @Column(name = "constructor_id", unique = true, nullable = false)
-    private String constructorId;
+  @Column(name = "constructor_id", unique = true, nullable = false)
+  private String constructorId;
 
-    @Column(name = "url", nullable = false)
-    private String url;
+  @Column(name = "url", nullable = false)
+  private String url;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+  @Column(name = "name", nullable = false)
+  private String name;
 
-    @Column(name = "nationality", nullable = false)
-    private String nationality;
+  @Column(name = "nationality", nullable = false)
+  private String nationality;
 
-    @Embedded
-    @Builder.Default
-    @EqualsAndHashCode.Exclude
-    private TimeLog timeLog = new TimeLog();
+  @Embedded @Builder.Default @EqualsAndHashCode.Exclude private TimeLog timeLog = new TimeLog();
 }
-

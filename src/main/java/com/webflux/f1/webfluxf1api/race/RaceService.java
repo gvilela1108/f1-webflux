@@ -5,7 +5,7 @@ import reactor.core.publisher.Mono;
 
 public interface RaceService {
 
-    Mono<RaceResponse> getRaceResult(int season, String round);
+  Mono<RaceResponse> getRaceResult(int season, String round);
 
-    Flux<RaceResponse> getResultsFromSeason(int season);
+  Flux<RaceResponse> getResultsFromSeason(int season);
 }

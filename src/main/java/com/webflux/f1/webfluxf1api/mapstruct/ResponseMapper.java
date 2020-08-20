@@ -4,8 +4,7 @@ import java.util.List;
 
 public interface ResponseMapper<D, R> {
 
-    R fromResponse(D dto);
+  R fromResponse(D dto);
 
-    List<R> fromResponse(List<D> responseList);
-
+  List<R> fromResponse(List<D> responseList);
 }

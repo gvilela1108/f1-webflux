@@ -11,22 +11,22 @@ import static com.webflux.f1.webfluxf1api.exception.ErrorCode.GENERIC;
 
 @Getter
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class InternalErrorException extends RuntimeException implements
-        Supplier<InternalErrorException> {
+public class InternalErrorException extends RuntimeException
+    implements Supplier<InternalErrorException> {
 
-    private final @NonNull ErrorCode errorCode;
+  private final @NonNull ErrorCode errorCode;
 
-    public InternalErrorException() {
-        super();
-        this.errorCode = GENERIC;
-    }
+  public InternalErrorException() {
+    super();
+    this.errorCode = GENERIC;
+  }
 
-    public InternalErrorException get() {
-        return new InternalErrorException();
-    }
+  public InternalErrorException get() {
+    return new InternalErrorException();
+  }
 
-    @Override
-    public String getMessage() {
-        return errorCode.getDescription();
-    }
+  @Override
+  public String getMessage() {
+    return errorCode.getDescription();
+  }
 }

@@ -1,20 +1,19 @@
-package com.webflux.f1.webfluxf1api.race;
+package com.webflux.f1.webfluxf1api.fastestlap;
 
 import com.webflux.f1.webfluxf1api.audit.TimeLog;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "races")
+@Table(name = "fatests_lap")
 @DynamicUpdate
-public class Race {
+public class FastestLap {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,23 +25,20 @@ public class Race {
   @Column(name = "round", nullable = false)
   private String round;
 
-  @Column(name = "url", nullable = false)
-  private String url;
+  @Column(name = "rank", nullable = false)
+  private Integer rank;
 
-  @Column(name = "race_name", nullable = false)
-  private String raceName;
-
-  @Column(name = "circuit_id", nullable = false)
-  private String circuitId;
-
-  @Column(name = "date", nullable = false)
-  private LocalDate date;
+  @Column(name = "lap", nullable = false)
+  private Integer lap;
 
   @Column(name = "time", nullable = false)
   private String time;
 
-  @Column(name = "sent_kafka", nullable = false)
-  private boolean sentKafka;
+  @Column(name = "average_speed_units", nullable = false)
+  private String units;
+
+  @Column(name = "average_speed", nullable = false)
+  private Float speed;
 
   @Embedded @Builder.Default @EqualsAndHashCode.Exclude private TimeLog timeLog = new TimeLog();
 }

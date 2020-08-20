@@ -14,16 +14,15 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FastestLapResponse {
 
-    @JsonProperty("rank")
-    private String rank;
+  @JsonProperty("rank")
+  private String rank;
 
-    @JsonProperty("lap")
-    private String lap;
+  @JsonProperty("lap")
+  private String lap;
 
-    @JsonProperty("Time")
-    private Time time;
+  @JsonProperty("Time")
+  private Time time;
 
-    @JsonProperty("AverageSpeed")
-    private AverageSpeed averageSpeed;
-
+  @JsonProperty("AverageSpeed")
+  private AverageSpeed averageSpeed;
 }

@@ -14,16 +14,15 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Location {
 
-    @JsonProperty("lat")
-    private String latitude;
+  @JsonProperty("lat")
+  private String latitude;
 
-    @JsonProperty("long")
-    private String longitude;
+  @JsonProperty("long")
+  private String longitude;
 
-    @JsonProperty("locality")
-    private String locality;
+  @JsonProperty("locality")
+  private String locality;
 
-    @JsonProperty("country")
-    private String country;
-
+  @JsonProperty("country")
+  private String country;
 }

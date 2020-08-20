@@ -14,26 +14,24 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MrData {
 
-    @JsonProperty("xmlns")
-    private String xmlns;
+  @JsonProperty("xmlns")
+  private String xmlns;
 
-    @JsonProperty("series")
-    private String series;
+  @JsonProperty("series")
+  private String series;
 
-    @JsonProperty("url")
-    private String url;
+  @JsonProperty("url")
+  private String url;
 
-    @JsonProperty("limit")
-    private String limit;
+  @JsonProperty("limit")
+  private String limit;
 
-    @JsonProperty("offset")
-    private String offset;
+  @JsonProperty("offset")
+  private String offset;
 
-    @JsonProperty("total")
-    private String total;
+  @JsonProperty("total")
+  private String total;
 
-    @JsonProperty("RaceTable")
-    private RaceTable raceTable;
-
-
+  @JsonProperty("RaceTable")
+  private RaceTable raceTable;
 }

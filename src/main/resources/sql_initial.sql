@@ -27,6 +27,7 @@ create table races (
 	,circuit_id	varchar(30)	not null
 	,date		DATE		NOT NULL
 	,time		VARCHAR(30)	NOT null
+	,sent_kafka  boolean not null default false
     ,dat_creation 			TIMESTAMP not null
     ,dat_update 				TIMESTAMP
 
@@ -90,11 +91,6 @@ id BIGSERIAL not null
 );
 
 
-
-
-
-
-
 ALTER TABLE circuits ADD CONSTRAINT pk_circuit PRIMARY KEY (circuit_id);
 ALTER TABLE races ADD CONSTRAINT pk_race PRIMARY KEY (season,round);
 ALTER TABLE drivers ADD CONSTRAINT pk_driver PRIMARY KEY (driver_id);
@@ -106,6 +102,3 @@ alter table results add constraint fk_results_races foreign key(season,round) RE
 alter table results add constraint fk_results_driver foreign key(driver_id) REFERENCES	drivers(driver_id);
 alter table results add constraint fk_results_constructors foreign key(constructor_id) REFERENCES	constructors(constructor_id);
 alter table fatests_lap add constraint fk_race_flap foreign key(season,round) REFERENCES	races(season,round);
-
-
-

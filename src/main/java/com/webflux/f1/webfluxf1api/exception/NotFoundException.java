@@ -13,21 +13,20 @@ import static com.webflux.f1.webfluxf1api.exception.ErrorCode.GENERIC;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class NotFoundException extends RuntimeException implements Supplier<NotFoundException> {
 
-    private final
-    @NonNull ErrorCode errorCode;
+  private final @NonNull ErrorCode errorCode;
 
-    public NotFoundException() {
-        super();
-        this.errorCode = GENERIC;
-    }
+  public NotFoundException() {
+    super();
+    this.errorCode = GENERIC;
+  }
 
-    @Override
-    public NotFoundException get() {
-        return new NotFoundException();
-    }
+  @Override
+  public NotFoundException get() {
+    return new NotFoundException();
+  }
 
-    @Override
-    public String getMessage() {
-        return errorCode.getDescription();
-    }
+  @Override
+  public String getMessage() {
+    return errorCode.getDescription();
+  }
 }

@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CircuitRepository extends JpaRepository<Circuit, String> {
 
-    Circuit findByCircuitId(String circuitId);
-
+  Circuit findByCircuitId(String circuitId);
 }

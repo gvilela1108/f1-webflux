@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface F1FeignClient {
 
-    @RequestLine("GET /{season}/{round}/results.json")
-    Optional<RaceData> getRaceResults(
-            @Param("season") final int season, @Param("round") final String round);
+  @RequestLine("GET /{season}/{round}/results.json")
+  Optional<RaceData> getRaceResults(
+      @Param("season") final int season, @Param("round") final String round);
 }

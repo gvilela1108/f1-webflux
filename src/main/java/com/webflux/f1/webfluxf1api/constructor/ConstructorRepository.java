@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ConstructorRepository extends JpaRepository<Constructor, String> {
 
-    Constructor findByConstructorId(String constructor_id);
+  Constructor findByConstructorId(String constructor_id);
 }

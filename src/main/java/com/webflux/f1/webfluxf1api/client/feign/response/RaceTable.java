@@ -16,13 +16,12 @@ import java.util.ArrayList;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RaceTable {
 
-    @JsonProperty("season")
-    private String season;
+  @JsonProperty("season")
+  private String season;
 
-    @JsonProperty("round")
-    private String round;
+  @JsonProperty("round")
+  private String round;
 
-    @JsonProperty("Races")
-    private ArrayList<Races> races;
-
+  @JsonProperty("Races")
+  private ArrayList<Races> races;
 }

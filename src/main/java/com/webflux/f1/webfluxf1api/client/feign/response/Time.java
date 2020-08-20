@@ -14,10 +14,9 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Time {
 
-    @JsonProperty("millis")
-    private String millis;
+  @JsonProperty("millis")
+  private String millis;
 
-    @JsonProperty("time")
-    private String time;
-
+  @JsonProperty("time")
+  private String time;
 }

@@ -9,10 +9,8 @@ import static org.mapstruct.ReportingPolicy.IGNORE;
 
 @Configuration
 @MapperConfig(
-        componentModel = "spring",
-        unmappedTargetPolicy = IGNORE,
-        injectionStrategy = CONSTRUCTOR,
-        nullValueCheckStrategy = ON_IMPLICIT_CONVERSION)
-public class MapstructConfig {
-
-}
+    componentModel = "spring",
+    unmappedTargetPolicy = IGNORE,
+    injectionStrategy = CONSTRUCTOR,
+    nullValueCheckStrategy = ON_IMPLICIT_CONVERSION)
+public class MapstructConfig {}

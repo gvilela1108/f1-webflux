@@ -14,37 +14,36 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResultsResponse {
 
-    @JsonProperty("number")
-    private String number;
+  @JsonProperty("number")
+  private String number;
 
-    @JsonProperty("position")
-    private String position;
+  @JsonProperty("position")
+  private String position;
 
-    @JsonProperty("positionText")
-    private String positionText;
+  @JsonProperty("positionText")
+  private String positionText;
 
-    @JsonProperty("points")
-    private String points;
+  @JsonProperty("points")
+  private String points;
 
-    @JsonProperty("Driver")
-    private DriverResponse driver;
+  @JsonProperty("Driver")
+  private DriverResponse driver;
 
-    @JsonProperty("Constructor")
-    private ConstructorResponse constructor;
+  @JsonProperty("Constructor")
+  private ConstructorResponse constructor;
 
-    @JsonProperty("grid")
-    private String grid;
+  @JsonProperty("grid")
+  private String grid;
 
-    @JsonProperty("laps")
-    private String laps;
+  @JsonProperty("laps")
+  private String laps;
 
-    @JsonProperty("status")
-    private String status;
+  @JsonProperty("status")
+  private String status;
 
-    @JsonProperty("Time")
-    private Time time;
+  @JsonProperty("Time")
+  private Time time;
 
-    @JsonProperty("FastestLap")
-    private FastestLapResponse fastestLap;
-
+  @JsonProperty("FastestLap")
+  private FastestLapResponse fastestLap;
 }

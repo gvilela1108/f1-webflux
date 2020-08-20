@@ -14,10 +14,9 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AverageSpeed {
 
-    @JsonProperty("units")
-    private String units;
+  @JsonProperty("units")
+  private String units;
 
-    @JsonProperty("speed")
-    private String speed;
-
+  @JsonProperty("speed")
+  private String speed;
 }

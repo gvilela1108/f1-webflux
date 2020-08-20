@@ -14,16 +14,15 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CircuitResponse {
 
-    @JsonProperty("circuitId")
-    private String circuitId;
+  @JsonProperty("circuitId")
+  private String circuitId;
 
-    @JsonProperty("url")
-    private String url;
+  @JsonProperty("url")
+  private String url;
 
-    @JsonProperty("circuitName")
-    private String circuitName;
+  @JsonProperty("circuitName")
+  private String circuitName;
 
-    @JsonProperty("Location")
-    private Location location;
-
+  @JsonProperty("Location")
+  private Location location;
 }

@@ -17,7 +17,6 @@ import java.util.ArrayList;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RaceResponse {
 
-    @JsonProperty("race_result")
-    private ArrayList<Races> raceResult;
-
+  @JsonProperty("race_result")
+  private ArrayList<Races> raceResult;
 }

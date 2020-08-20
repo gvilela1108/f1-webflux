@@ -14,16 +14,15 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ConstructorResponse {
 
-    @JsonProperty("constructorId")
-    private String constructorId;
+  @JsonProperty("constructorId")
+  private String constructorId;
 
-    @JsonProperty("url")
-    private String url;
+  @JsonProperty("url")
+  private String url;
 
-    @JsonProperty("name")
-    private String name;
+  @JsonProperty("name")
+  private String name;
 
-    @JsonProperty("nationality")
-    private String nationality;
-
+  @JsonProperty("nationality")
+  private String nationality;
 }

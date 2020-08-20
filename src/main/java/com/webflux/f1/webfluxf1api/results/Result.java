@@ -15,51 +15,48 @@ import javax.persistence.*;
 @DynamicUpdate
 public class Result {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-    @Column(name = "season", nullable = false)
-    private Integer season;
+  @Column(name = "season", nullable = false)
+  private Integer season;
 
-    @Column(name = "round", nullable = false)
-    private String round;
+  @Column(name = "round", nullable = false)
+  private String round;
 
-    @Column(name = "numero", nullable = false)
-    private String number;
+  @Column(name = "numero", nullable = false)
+  private String number;
 
-    @Column(name = "position", nullable = false)
-    private String position;
+  @Column(name = "position", nullable = false)
+  private String position;
 
-    @Column(name = "position_text", nullable = false)
-    private String positionText;
+  @Column(name = "position_text", nullable = false)
+  private String positionText;
 
-    @Column(name = "points", nullable = false)
-    private Integer points;
+  @Column(name = "points", nullable = false)
+  private Integer points;
 
-    @Column(name = "driver_id", nullable = false)
-    private String driverId;
+  @Column(name = "driver_id", nullable = false)
+  private String driverId;
 
-    @Column(name = "constructor_id", nullable = false)
-    private String constructorId;
+  @Column(name = "constructor_id", nullable = false)
+  private String constructorId;
 
-    @Column(name = "grid", nullable = false)
-    private String grid;
+  @Column(name = "grid", nullable = false)
+  private String grid;
 
-    @Column(name = "laps", nullable = false)
-    private Integer laps;
+  @Column(name = "laps", nullable = false)
+  private Integer laps;
 
-    @Column(name = "status", nullable = false)
-    private String status;
+  @Column(name = "status", nullable = false)
+  private String status;
 
-    @Column(name = "time_millis")
-    private Integer millis;
+  @Column(name = "time_millis")
+  private Integer millis;
 
-    @Column(name = "time", nullable = false)
-    private String time;
+  @Column(name = "time", nullable = false)
+  private String time;
 
-    @Embedded
-    @Builder.Default
-    @EqualsAndHashCode.Exclude
-    private TimeLog timeLog = new TimeLog();
+  @Embedded @Builder.Default @EqualsAndHashCode.Exclude private TimeLog timeLog = new TimeLog();
 }

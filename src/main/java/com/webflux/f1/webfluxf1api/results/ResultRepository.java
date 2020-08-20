@@ -7,5 +7,5 @@ import java.util.ArrayList;
 
 @Repository
 public interface ResultRepository extends JpaRepository<Result, String> {
-    ArrayList<Result> findBySeasonAndRound(Integer season, String round);
+  ArrayList<Result> findBySeasonAndRound(Integer season, String round);
 }

@@ -10,12 +10,11 @@ import java.util.Optional;
 @AllArgsConstructor
 public class F1ClientFallback implements F1FeignClient {
 
-    private final Throwable cause;
+  private final Throwable cause;
 
-    @Override
-    public Optional<RaceData> getRaceResults(int season, String round) {
-        log.error("Erro F1FeignClient.getRaceResults: " + cause.getMessage());
-        return Optional.empty();
-    }
-
+  @Override
+  public Optional<RaceData> getRaceResults(int season, String round) {
+    log.error("Erro F1FeignClient.getRaceResults: " + cause.getMessage());
+    return Optional.empty();
+  }
 }

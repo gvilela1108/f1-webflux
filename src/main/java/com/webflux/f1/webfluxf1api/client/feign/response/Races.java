@@ -16,28 +16,27 @@ import java.util.ArrayList;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Races {
 
-    @JsonProperty("season")
-    private String season;
+  @JsonProperty("season")
+  private String season;
 
-    @JsonProperty("round")
-    private String round;
+  @JsonProperty("round")
+  private String round;
 
-    @JsonProperty("url")
-    private String url;
+  @JsonProperty("url")
+  private String url;
 
-    @JsonProperty("raceName")
-    private String raceName;
+  @JsonProperty("raceName")
+  private String raceName;
 
-    @JsonProperty("Circuit")
-    private CircuitResponse circuit;
+  @JsonProperty("Circuit")
+  private CircuitResponse circuit;
 
-    @JsonProperty("date")
-    private String date;
+  @JsonProperty("date")
+  private String date;
 
-    @JsonProperty("time")
-    private String time;
+  @JsonProperty("time")
+  private String time;
 
-    @JsonProperty("Results")
-    private ArrayList<ResultsResponse> results;
-
+  @JsonProperty("Results")
+  private ArrayList<ResultsResponse> results;
 }

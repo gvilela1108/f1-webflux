@@ -12,17 +12,18 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class RaceResource {
 
-    private final RaceService raceService;
+  private final RaceService raceService;
 
-    @GetMapping("/resultBySeasonAndRound")
-    @ResponseStatus(HttpStatus.OK)
-    public Mono<RaceResponse> getRaceResult(@RequestParam("season") int season, @RequestParam("round") String round) {
-        return raceService.getRaceResult(season, round);
-    }
+  @GetMapping("/resultBySeasonAndRound")
+  @ResponseStatus(HttpStatus.OK)
+  public Mono<RaceResponse> getRaceResult(
+      @RequestParam("season") int season, @RequestParam("round") String round) {
+    return raceService.getRaceResult(season, round);
+  }
 
-    @GetMapping("/resultsFromSeason")
-    @ResponseStatus(HttpStatus.OK)
-    public Flux<RaceResponse> getResultsFromSeason(@RequestParam("season") int season) {
-        return raceService.getResultsFromSeason(season);
-    }
+  @GetMapping("/resultsFromSeason")
+  @ResponseStatus(HttpStatus.OK)
+  public Flux<RaceResponse> getResultsFromSeason(@RequestParam("season") int season) {
+    return raceService.getResultsFromSeason(season);
+  }
 }

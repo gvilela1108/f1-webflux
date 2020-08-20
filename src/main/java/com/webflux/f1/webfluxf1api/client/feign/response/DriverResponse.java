@@ -14,28 +14,27 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DriverResponse {
 
-    @JsonProperty("driverId")
-    private String driverId;
+  @JsonProperty("driverId")
+  private String driverId;
 
-    @JsonProperty("permanentNumber")
-    private String permanentNumber;
+  @JsonProperty("permanentNumber")
+  private String permanentNumber;
 
-    @JsonProperty("code")
-    private String code;
+  @JsonProperty("code")
+  private String code;
 
-    @JsonProperty("url")
-    private String url;
+  @JsonProperty("url")
+  private String url;
 
-    @JsonProperty("givenName")
-    private String givenName;
+  @JsonProperty("givenName")
+  private String givenName;
 
-    @JsonProperty("familyName")
-    private String familyName;
+  @JsonProperty("familyName")
+  private String familyName;
 
-    @JsonProperty("dateOfBirth")
-    private String dateOfBirth;
+  @JsonProperty("dateOfBirth")
+  private String dateOfBirth;
 
-    @JsonProperty("nationality")
-    private String nationality;
-
+  @JsonProperty("nationality")
+  private String nationality;
 }

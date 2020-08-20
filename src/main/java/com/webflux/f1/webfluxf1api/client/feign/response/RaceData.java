@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RaceData {
 
-    @JsonProperty("MRData")
-    private MrData mrData;
-
+  @JsonProperty("MRData")
+  private MrData mrData;
 }

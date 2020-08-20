@@ -24,55 +24,53 @@ import java.util.Optional;
 @Configuration
 public class FeignConfig {
 
-    private final ObjectMapper mapper =
-            new ObjectMapper()
-                    .registerModules(new Jdk8Module(), new JavaTimeModule())
-                    .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+  private final ObjectMapper mapper =
+      new ObjectMapper()
+          .registerModules(new Jdk8Module(), new JavaTimeModule())
+          .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-    private final JacksonEncoder jacksonEncoder = new JacksonEncoder(mapper);
-    private final JacksonDecoder jacksonDecoder = new JacksonDecoder(mapper);
+  private final JacksonEncoder jacksonEncoder = new JacksonEncoder(mapper);
+  private final JacksonDecoder jacksonDecoder = new JacksonDecoder(mapper);
 
-    @Value("${ergast.url}")
-    private String apiUrl;
+  @Value("${ergast.url}")
+  private String apiUrl;
 
-    @Bean
-    public F1FeignClient f1FeignClient() {
-        return HystrixFeign.builder()
-                .contract(feignContract())
-                .encoder(jacksonEncoder)
-                .decoder(new F1ClientDecoder())
-                .logger(new Slf4jLogger())
-                .logLevel(Logger.Level.FULL)
-                .client(new Http2Client())
-                .retryer(Retryer.NEVER_RETRY)
-                .decode404()
-                .target(
-                        new Target.HardCodedTarget<>(F1FeignClient.class, apiUrl),
-                        new F1ClientFactory());
+  @Bean
+  public F1FeignClient f1FeignClient() {
+    return HystrixFeign.builder()
+        .contract(feignContract())
+        .encoder(jacksonEncoder)
+        .decoder(new F1ClientDecoder())
+        .logger(new Slf4jLogger())
+        .logLevel(Logger.Level.FULL)
+        .client(new Http2Client())
+        .retryer(Retryer.NEVER_RETRY)
+        .decode404()
+        .target(new Target.HardCodedTarget<>(F1FeignClient.class, apiUrl), new F1ClientFactory());
+  }
+
+  @Bean
+  public Contract feignContract() {
+    return new Contract.Default();
+  }
+
+  @Bean
+  public F1ClientFactory fallbackFactory() {
+    return new F1ClientFactory();
+  }
+
+  class F1ClientDecoder extends JacksonDecoder {
+
+    private static final String OPTIONAL_VOID_NAME = "java.util.Optional<java.lang.Void>";
+
+    @Override
+    public Object decode(Response response, Type type) throws IOException {
+      final boolean isOptionalVoidType = type.getTypeName().equals(OPTIONAL_VOID_NAME);
+      final boolean successfulStatus = HttpStatus.valueOf(response.status()).is2xxSuccessful();
+      if (successfulStatus && isOptionalVoidType) {
+        return Optional.of(response.body());
+      }
+      return jacksonDecoder.decode(response, type);
     }
-
-    @Bean
-    public Contract feignContract() {
-        return new Contract.Default();
-    }
-
-    @Bean
-    public F1ClientFactory fallbackFactory() {
-        return new F1ClientFactory();
-    }
-
-    class F1ClientDecoder extends JacksonDecoder {
-
-        private static final String OPTIONAL_VOID_NAME = "java.util.Optional<java.lang.Void>";
-
-        @Override
-        public Object decode(Response response, Type type) throws IOException {
-            final boolean isOptionalVoidType = type.getTypeName().equals(OPTIONAL_VOID_NAME);
-            final boolean successfulStatus = HttpStatus.valueOf(response.status()).is2xxSuccessful();
-            if (successfulStatus && isOptionalVoidType) {
-                return Optional.of(response.body());
-            }
-            return jacksonDecoder.decode(response, type);
-        }
-    }
+  }
 }
