@@ -19,12 +19,12 @@ Exception Handler
 ## Autores
 
 * **Guilherme Vilela** - *Versão Inicial* - [gvilela1108](https://github.com/gvilela1108)
-* **Angevaldo Peixoto da Rocha Junior** - *Versão Inicial* - [angevaldo](https://github.com/angevaldo)
-* **Renato Rodrigues de Mello** - *Versão Inicial* - [rerodriguis](https://github.com/rerodriguis)
+* **Angevaldo Peixoto da Rocha Junior** - *1.1* - [angevaldo](https://github.com/angevaldo)
+* **Renato Rodrigues de Mello** - *1.1* - [rerodriguis](https://github.com/rerodriguis)
 
 
 
  
 
 ## Versão
-1.0
+1.1
