@@ -19,6 +19,9 @@ Exception Handler
 ## Autores
 
 * **Guilherme Vilela** - *Versão Inicial* - [gvilela1108](https://github.com/gvilela1108)
+* **Angevaldo Peixoto da Rocha Junior** - *Versão Inicial* - [angevaldo](https://github.com/angevaldo)
+
+ 
 
 ## Versão
 1.0
