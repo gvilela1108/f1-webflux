@@ -27,7 +27,6 @@ public interface RaceMapper {
         .season(Integer.valueOf(races.getSeason()))
         .time(races.getTime())
         .url(races.getUrl())
-        .sentKafka(false)
         .build();
   }
 

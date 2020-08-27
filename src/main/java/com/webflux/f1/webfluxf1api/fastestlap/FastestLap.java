@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "fatests_lap")
+@Table(name = "fastest_lap")
 @DynamicUpdate
 public class FastestLap {
 

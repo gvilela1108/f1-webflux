@@ -29,9 +29,10 @@ public interface ResultMapper {
         .round(round)
         .season(season)
         .status(resultsResponse.getStatus())
+        .sentKafka(false)
         .time(
             isEmpty(resultsResponse.getTime())
-                ? "A"
+                ? ""
                 : isEmpty(resultsResponse.getTime().getTime())
                     ? "0"
                     : resultsResponse.getTime().getTime())
@@ -59,5 +60,25 @@ public interface ResultMapper {
         .positionText(result.getPositionText())
         .status(result.getStatus())
         .build();
+  }
+
+  default ResultKafka resultKafka(Result result) {
+    return ResultKafka.builder()
+            .id(result.getId())
+            .driverId(result.getDriverId())
+            .constructorId(result.getConstructorId())
+            .grid(result.getGrid())
+            .laps(result.getLaps())
+            .millis(result.getMillis())
+            .number(result.getNumber())
+            .points(result.getPoints())
+            .position(result.getPosition())
+            .positionText(result.getPositionText())
+            .round(result.getRound())
+            .season(result.getSeason())
+            .status(result.getStatus())
+            .time(result.getTime())
+            .build();
+
   }
 }

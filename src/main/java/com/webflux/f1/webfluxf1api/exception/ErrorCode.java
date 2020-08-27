@@ -8,6 +8,8 @@ public enum ErrorCode {
   SEASON_ERROR(10001, "Temporada informada superior a temporada corrente"),
   RACE_NOT_FOUND(10002, "Dados de corrida não encontrados"),
   DATABASE_ERROR(10003, "Erro ao salvar os dados"),
+  SEND_KAFKA_ERROR(10004, "Erro ao enviar para o kafka"),
+  KAFKA_PRODUCER_ERROR(10005,"Erro ao executar o kafka producer"),
   GENERIC(99999, "Serviço indisponível");
 
   private Integer code;

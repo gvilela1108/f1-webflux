@@ -1,18 +1,22 @@
-package com.webflux.f1.webfluxf1api.race;
+package com.webflux.f1.webfluxf1api.factory;
 
 import com.webflux.f1.webfluxf1api.circuit.Circuit;
 import com.webflux.f1.webfluxf1api.client.feign.response.*;
 import com.webflux.f1.webfluxf1api.constructor.Constructor;
 import com.webflux.f1.webfluxf1api.driver.Driver;
 import com.webflux.f1.webfluxf1api.fastestlap.FastestLap;
+import com.webflux.f1.webfluxf1api.race.Race;
+import com.webflux.f1.webfluxf1api.race.RaceResponse;
 import com.webflux.f1.webfluxf1api.results.Result;
+import com.webflux.f1.webfluxf1api.results.ResultKafka;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.hamcrest.Factory;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public final class RaceFactory {
+public final class F1Factory {
 
   public static final Integer SEASON = 2020;
   public static final String ROUND = "1";
@@ -84,7 +88,6 @@ public final class RaceFactory {
         .date(LocalDate.parse(RACE_DATE))
         .round(ROUND)
         .season(SEASON)
-        .sentKafka(false)
         .time(RACE_TIME)
         .url(RACE_URL)
         .build();
@@ -149,7 +152,7 @@ public final class RaceFactory {
         .build();
   }
 
-  public static Result resultBuilder() {
+  public static Result resultBuilder(boolean kafka) {
     return Result.builder()
         .time(RESULT_TIME)
         .status(RESULT_STATUS)
@@ -164,7 +167,28 @@ public final class RaceFactory {
         .grid(RESULT_GRID)
         .driverId(DRIVER_ID)
         .constructorId(CONSTRUCTOR_ID)
+        .sentKafka(kafka)
         .build();
+  }
+
+  public static Result resultKafkaBuilder(boolean kafka) {
+    return Result.builder()
+            .id(NumberUtils.INTEGER_ONE)
+            .time(RESULT_TIME)
+            .status(RESULT_STATUS)
+            .season(SEASON)
+            .round(ROUND)
+            .positionText(RESULT_POSITION)
+            .position(RESULT_POSITION)
+            .points(Integer.valueOf(RESULT_POINTS))
+            .number(RESULT_NUMBER)
+            .millis(Integer.valueOf(RESULT_MILLIS))
+            .laps(Integer.valueOf(RESULT_LAPS))
+            .grid(RESULT_GRID)
+            .driverId(DRIVER_ID)
+            .constructorId(CONSTRUCTOR_ID)
+            .sentKafka(kafka)
+            .build();
   }
 
   public static ResultsResponse resultClientBuilder() {
@@ -186,7 +210,15 @@ public final class RaceFactory {
   public static ArrayList<Result> resultListBuilder() {
     return new ArrayList<Result>() {
       {
-        add(resultBuilder());
+        add(resultBuilder(false));
+      }
+    };
+  }
+
+  public static ArrayList<Result> resultListKafkaBuilder() {
+    return new ArrayList<Result>() {
+      {
+        add(resultKafkaBuilder(true));
       }
     };
   }
@@ -245,7 +277,7 @@ public final class RaceFactory {
 
   public static FastestLapResponse fastestLapResponseBuilder() {
     return FastestLapResponse.builder()
-        .time(timeBuilder("", TIME_LAP))
+        .time(timeBuilder(null, TIME_LAP))
         .rank(RANK)
         .lap(LAP)
         .averageSpeed(averageSpeedBuilder())
@@ -257,6 +289,7 @@ public final class RaceFactory {
         .speed(Float.valueOf(SPEED))
         .lap(Integer.valueOf(LAP))
         .rank(Integer.valueOf(RANK))
+        .driverId(DRIVER_ID)
         .time(TIME_LAP)
         .round(ROUND)
         .season(SEASON)
@@ -270,5 +303,24 @@ public final class RaceFactory {
 
   private static Time timeBuilder(String millis, String time) {
     return Time.builder().millis(millis).time(time).build();
+  }
+
+  public static ResultKafka buildResultKafka() {
+    return ResultKafka.builder()
+        .id(1)
+        .time(RESULT_TIME)
+        .status(RESULT_STATUS)
+        .season(SEASON)
+        .round(ROUND)
+        .positionText(RESULT_POSITION)
+        .position(RESULT_POSITION)
+        .points(Integer.valueOf(RESULT_POINTS))
+        .number(RESULT_NUMBER)
+        .millis(Integer.valueOf(RESULT_MILLIS))
+        .laps(Integer.valueOf(RESULT_LAPS))
+        .grid(RESULT_GRID)
+        .driverId(DRIVER_ID)
+        .constructorId(CONSTRUCTOR_ID)
+        .build();
   }
 }

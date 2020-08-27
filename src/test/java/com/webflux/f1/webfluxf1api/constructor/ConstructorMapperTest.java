@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static com.webflux.f1.webfluxf1api.race.RaceFactory.constructorBuilder;
-import static com.webflux.f1.webfluxf1api.race.RaceFactory.constructorResponseBuilder;
+import static com.webflux.f1.webfluxf1api.factory.F1Factory.constructorBuilder;
+import static com.webflux.f1.webfluxf1api.factory.F1Factory.constructorResponseBuilder;
 import static org.junit.Assert.assertEquals;
 
 @SpringBootTest

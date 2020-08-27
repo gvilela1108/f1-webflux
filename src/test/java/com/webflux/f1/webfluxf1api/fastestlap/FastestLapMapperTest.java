@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static com.webflux.f1.webfluxf1api.race.RaceFactory.*;
+import static com.webflux.f1.webfluxf1api.factory.F1Factory.*;
 import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
@@ -18,7 +18,7 @@ public class FastestLapMapperTest {
   @Test
   public void shouldGetFLap_whenFromClientToEntityIsCalled() {
     final var result = mapper.fromClientToEntity(fastestLapResponseBuilder(), SEASON, ROUND, DRIVER_ID);
-    assertEquals(result, driverBuilder());
+    assertEquals(result, fastestLapBuilder());
   }
 
   @Test

@@ -1,10 +1,7 @@
---drop table circuits
-
-
 drop table results;
 drop table constructors;
 drop table drivers;
-drop table fatests_lap;
+drop table fastest_lap;
 drop table races;
 drop table circuits;
 
@@ -35,12 +32,13 @@ create table races (
 
 );
 
-create table fatests_lap(
+create table fastest_lap(
 	id BIGSERIAL not null
 	,season					INTEGER  	NOT NULL
 	,round					VARCHAR(5)	NOT null
 	,rank					INTEGER 	NOT null
 	,lap					INTEGER
+	,driver_id			varchar(30)
 	,time_milis				VARCHAR(30)
 	,time					VARCHAR(8)
 	,average_speed_units	VARCHAR(3)
@@ -88,10 +86,10 @@ id BIGSERIAL not null
 	,status			VARCHAR(20)	NOT null
 	,time_millis	integer
 	,time			varchar(20)	not null
+	,sent_kafka boolean default false
     ,dat_creation 			TIMESTAMP not null
     ,dat_update 				TIMESTAMP
 );
-
 
 ALTER TABLE circuits ADD CONSTRAINT pk_circuit PRIMARY KEY (circuit_id);
 ALTER TABLE races ADD CONSTRAINT pk_race PRIMARY KEY (season,round);
@@ -103,5 +101,7 @@ alter table races add constraint fk_circuit foreign key(circuit_id) REFERENCES	c
 alter table results add constraint fk_results_races foreign key(season,round) REFERENCES	races(season,round);
 alter table results add constraint fk_results_driver foreign key(driver_id) REFERENCES	drivers(driver_id);
 alter table results add constraint fk_results_constructors foreign key(constructor_id) REFERENCES	constructors(constructor_id);
-alter table fatests_lap add constraint fk_race_flap foreign key(season,round) REFERENCES	races(season,round);
+alter table fastest_lap add constraint fk_race_flap foreign key(season,round) REFERENCES	races(season,round);
+
+
 

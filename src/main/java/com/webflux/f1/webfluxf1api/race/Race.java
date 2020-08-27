@@ -41,8 +41,5 @@ public class Race {
   @Column(name = "time", nullable = false)
   private String time;
 
-  @Column(name = "sent_kafka", nullable = false)
-  private boolean sentKafka;
-
   @Embedded @Builder.Default @EqualsAndHashCode.Exclude private TimeLog timeLog = new TimeLog();
 }

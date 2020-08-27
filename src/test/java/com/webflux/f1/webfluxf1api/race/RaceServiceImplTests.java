@@ -18,7 +18,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import reactor.test.StepVerifier;
 
-import static com.webflux.f1.webfluxf1api.race.RaceFactory.*;
+import static com.webflux.f1.webfluxf1api.factory.F1Factory.*;
 import static org.apache.commons.lang.math.NumberUtils.INTEGER_ONE;
 import static org.mockito.Mockito.*;
 
@@ -50,7 +50,7 @@ public class RaceServiceImplTests {
     var constructor = constructorBuilder();
     var driver = driverBuilder();
     var fastestLap = fastestLapBuilder();
-    var results = resultBuilder();
+    var results = resultBuilder(false);
 
     when(f1FeignClient.getRaceResults(SEASON, ROUND)).thenReturn(feignResponse());
     when(raceMapper.getRaceResults(raceTableBuilder())).thenReturn(raceResponseBuilder());
@@ -115,7 +115,7 @@ public class RaceServiceImplTests {
     when(fastestLapMapper.fromEntityToClient(fastestLapBuilder()))
         .thenReturn(fastestLapResponseBuilder());
     when(resultMapper.fromEntityToResponse(
-            resultBuilder(),
+            resultBuilder(false),
             driverResponseBuilder(),
             constructorResponseBuilder(),
             fastestLapResponseBuilder()))
@@ -140,7 +140,7 @@ public class RaceServiceImplTests {
     verify(fastestLapMapper, times(INTEGER_ONE)).fromEntityToClient(fastestLapBuilder());
     verify(resultMapper, times(INTEGER_ONE))
         .fromEntityToResponse(
-            resultBuilder(),
+            resultBuilder(false),
             driverResponseBuilder(),
             constructorResponseBuilder(),
             fastestLapResponseBuilder());

@@ -77,7 +77,7 @@ public class RaceServiceImpl implements RaceService {
           saveRaceResult(cRef.response.getRaceResult(), round, season);
         },
         () -> {
-          log.error("Erro no feign client m=getRaceResults season={} round={}", season, round);
+          log.error("Erro no feign client m=getRaceResults season={} round={} e={}", season, round);
           throw new InternalErrorException(F1_CLIENT_ERROR);
         });
 
@@ -119,10 +119,15 @@ public class RaceServiceImpl implements RaceService {
                             if (isEmpty(driverExists))
                               driverRepository.save(
                                   driverMapper.fromClientToEntity(resultRace.getDriver()));
+                            if (!isEmpty(resultRace.getFastestLap())) {
+                              fastestLapRepository.save(
+                                  fastestLapMapper.fromClientToEntity(
+                                      resultRace.getFastestLap(),
+                                      season,
+                                      round,
+                                      resultRace.getDriver().getDriverId()));
+                            }
 
-                            fastestLapRepository.save(
-                                fastestLapMapper.fromClientToEntity(
-                                    resultRace.getFastestLap(), season, round, resultRace.getDriver().getDriverId()));
                             resultRepository.save(
                                 resultMapper.fromClientToEntity(resultRace, season, round));
                           });
@@ -168,7 +173,7 @@ public class RaceServiceImpl implements RaceService {
                                 result,
                                 driverMapper.fromEntityToResponse(driver),
                                 constructorMapper.fromEntityToResponse(constructor),
-                                fastestLapMapper.fromEntityToClient(fastestLap)));
+                                isEmpty(fastestLap)?null:fastestLapMapper.fromEntityToClient(fastestLap)));
                       });
 
               racesResponse.add(

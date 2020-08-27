@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static com.webflux.f1.webfluxf1api.race.RaceFactory.*;
+import static com.webflux.f1.webfluxf1api.factory.F1Factory.*;
 import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
@@ -19,17 +19,23 @@ public class ResultMapperTest {
   @Test
   public void shouldGetResult_whenFromClientToEntityIsCalled() {
     final var result = mapper.fromClientToEntity(resultClientBuilder(), SEASON, ROUND);
-    assertEquals(result, resultBuilder());
+    assertEquals(result, resultBuilder(false));
   }
 
   @Test
   public void shouldGetResultResponse_whenFromEntityToClientIsCalled() {
     final var result =
         mapper.fromEntityToResponse(
-            resultBuilder(),
+            resultBuilder(false),
             driverResponseBuilder(),
             constructorResponseBuilder(),
             fastestLapResponseBuilder());
     assertEquals(result, resultClientBuilder());
+  }
+
+  @Test
+  public void shouldKafkaResult_whenResultKafka() {
+    final var resultKafka = mapper.resultKafka(resultKafkaBuilder(true));
+    assertEquals(resultKafka, buildResultKafka());
   }
 }

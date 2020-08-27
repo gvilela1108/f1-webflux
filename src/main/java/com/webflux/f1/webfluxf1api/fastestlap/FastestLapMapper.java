@@ -18,7 +18,7 @@ public interface FastestLapMapper {
         .lap(isEmpty(fastestLapResponse.getLap()) ? 0 : Integer.valueOf(fastestLapResponse.getLap()))
         .rank(isEmpty(fastestLapResponse.getRank()) ? 0 : Integer.valueOf(fastestLapResponse.getRank()))
         .speed(isEmpty(fastestLapResponse.getAverageSpeed().getSpeed()) ? 0 : Float.valueOf(fastestLapResponse.getAverageSpeed().getSpeed()))
-        .time(fastestLapResponse.getTime().getTime())
+        .time(isEmpty(fastestLapResponse.getTime())? "": isEmpty(fastestLapResponse.getTime().getTime()) ? "0" : fastestLapResponse.getTime().getTime())
         .round(round)
         .season(season)
         .units(fastestLapResponse.getAverageSpeed().getUnits())
