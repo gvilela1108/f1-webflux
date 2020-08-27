@@ -1,9 +1,9 @@
-drop table results;
-drop table constructors;
-drop table drivers;
-drop table fastest_lap;
-drop table races;
-drop table circuits;
+--drop table results;
+--drop table constructors;
+--drop table drivers;
+--drop table fastest_lap;
+--drop table races;
+--drop table circuits;
 
 create table circuits (
 	id BIGSERIAL not null
