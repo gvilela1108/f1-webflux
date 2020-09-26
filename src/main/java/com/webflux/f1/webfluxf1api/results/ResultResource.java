@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/result/")
+@RequestMapping("/results")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ResultResource {
 

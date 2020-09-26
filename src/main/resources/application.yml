@@ -9,9 +9,9 @@ spring:
     allow-bean-definition-overriding: true
     banner-mode: "off"
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5433/f1webflux
     username: postgres
-    password: vilela
+    password: postgres
     driverClassName: org.postgresql.Driver
 
 feign:

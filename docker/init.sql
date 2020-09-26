@@ -40,7 +40,7 @@ create table fastest_lap(
 	,lap					INTEGER
 	,driver_id			varchar(30)
 	,time_milis				VARCHAR(30)
-	,time					VARCHAR(8)
+	,time					VARCHAR(20)
 	,average_speed_units	VARCHAR(3)
 	,average_speed			NUMERIC(7,3)
     ,dat_creation 			TIMESTAMP not null
@@ -63,7 +63,7 @@ create table drivers (
 
 create table constructors (
 id BIGSERIAL not null
-  ,constructor_id			VARCHAR(8) NOT NULL
+  ,constructor_id			VARCHAR(20) NOT NULL
   ,url			VARCHAR(200) NOT NULL
   ,name			VARCHAR(20) NOT NULL
   ,nationality	VARCHAR(20) NOT null
@@ -80,7 +80,7 @@ id BIGSERIAL not null
 	,position_text	varchar(20)	not null
 	,points			INTEGER		not	null
 	,driver_id		VARCHAR(30)	not null
-	,constructor_id	varchar(8)	not null
+	,constructor_id	varchar(20)	not null
 	,grid			VARCHAR(3)	not null
 	,laps			integer		not null
 	,status			VARCHAR(20)	NOT null
